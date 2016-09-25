@@ -24,9 +24,9 @@ void save_to_ppm( uint8_t* data, char* file_name, uint8_t insert_time ) {
 	char full_file_name[40];
 	
 	if( insert_time )
-		sprintf( full_file_name, "%s-%i.ppm", file_name, time(NULL));
+		sprintf( full_file_name, "%s-%i.pgm", file_name, time(NULL));
 	else
-		sprintf( full_file_name, "%s.ppm", file_name);
+		sprintf( full_file_name, "%s.pgm", file_name);
 		
 	out = fopen(full_file_name, "w");
 	
@@ -59,10 +59,10 @@ void draw_leaves( double startX, double startY ) {
 	start_distance = (((rand()*LEAVES_MIN_RADIUS)/RAND_MAX)+LEAVES_MIN_RADIUS)/origin_distance;
 	distance = start_distance;
 
-	/*glBegin(GL_LINES);
+	glBegin(GL_LINES);
 		glVertex2f(startX, startY);
 		glVertex2f(startX+distance*cos(angle), startY+distance*sin(angle));
-	glEnd();*/
+	glEnd();
 	
 	while (angle < ((2*LEAVES_RETURN_SECTION_WIDTH-1)*PI/LEAVES_RETURN_SECTION_WIDTH)) {
 
@@ -78,10 +78,10 @@ void draw_leaves( double startX, double startY ) {
 		if( distance < LEAVES_MIN_RADIUS/origin_distance ) 
 			distance = LEAVES_MIN_RADIUS/origin_distance;
 
-		/*glBegin(GL_LINES);
+		glBegin(GL_LINES);
 			glVertex2f(startX, startY);
 			glVertex2f(startX+distance*cos(angle), startY+distance*sin(angle));
-		glEnd();*/
+		glEnd();
 		
 		
 	}
@@ -94,10 +94,10 @@ void draw_leaves( double startX, double startY ) {
 
 		distance += delta;
 
-		/*glBegin(GL_LINES);
+		glBegin(GL_LINES);
 			glVertex2f(startX, startY);
 			glVertex2f(startX+distance*cos(angle), startY+distance*sin(angle));
-		glEnd();*/
+		glEnd();
 		
 	}
 	
@@ -114,8 +114,7 @@ int main(int argc, char** argv) {
 	SDL_init();
 	glColor3ub(255,255,255);
 	
-	//srand(time(NULL));
-	srand(4242);
+	srand(time(NULL));
 
 	pixel_data = (uint8_t*)calloc(SCREEN_WIDTH*SCREEN_HEIGHT, sizeof(uint8_t));
 	

@@ -64,7 +64,7 @@ int SDL_init() {
 		SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 1);
 		
 		//Create window
-		gWindow = SDL_CreateWindow( "", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL );
+		gWindow = SDL_CreateWindow( "", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN );
 		if( gWindow == NULL ) {
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
 			return 0;
